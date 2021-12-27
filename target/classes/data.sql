@@ -1,0 +1,1 @@
+insert into tipo_cambio (valor_tipo_cambio, moneda_origen, moneda_destino) values (4.00, 'PEN', 'USD');
