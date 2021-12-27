@@ -14,6 +14,7 @@ import com.viabcp.tipocambio.response.CambioResponse;
 import com.viabcp.tipocambio.request.CambioRequest;
 
 import io.reactivex.Single;
+import java.math.RoundingMode;
 
 @Service
 public class TipoCambioServiceImpl implements TipoCambioService{
@@ -33,7 +34,7 @@ public class TipoCambioServiceImpl implements TipoCambioService{
 		            
 		           	CambioResponse cambioResponse = new CambioResponse();
 		           	if(!listResultado.isEmpty()) {
-	                    BigDecimal montoConTipoCambio = cambioRequest.getMonto().divide(listResultado.get(0).getValorTipoCambio());
+	                    BigDecimal montoConTipoCambio = cambioRequest.getMonto().divide(listResultado.get(0).getValorTipoCambio(), 2, RoundingMode.HALF_UP);
 	                    BigDecimal valorTipoCambio = listResultado.get(0).getValorTipoCambio();
 	                    cambioResponse.setMontoConTipoCambio(montoConTipoCambio);
 	                    cambioResponse.setValorTipoCambio(valorTipoCambio);
